@@ -93,8 +93,12 @@ function getSumBetweenNumbers(n1, n2) {
  *   10,1,1   =>  false
  *   10,10,10 =>  true
  */
-function isTriangle(/* a, b, c */) {
-  throw new Error('Not implemented');
+function isTriangle(a, b, c) {
+  const flag = true;
+  if (a + b > c && a + c > b && b + c > a) {
+    return flag;
+  }
+  return !flag;
 }
 
 
@@ -238,8 +242,9 @@ function reverseString(/* str */) {
  *   87354 => 45378
  *   34143 => 34143
  */
-function reverseInteger(/* num */) {
-  throw new Error('Not implemented');
+function reverseInteger(num) {
+  const i = String(num).split('').reverse().join('');
+  return parseInt(i, 10);
 }
 
 
