@@ -48,7 +48,7 @@ function getRegexForGuid() {
  *  'slap two'                'part'
  *  'respite'
  *
- * NOTE : the regex length should be < 13
+ * NOTE : the regex length should be < 13i
  *
  * @return {RegExp}
  *
