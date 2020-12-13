@@ -282,7 +282,6 @@ function get3TopItems(arr) {
   if (arr.length === 3) {
     const array1 = [];
     const array = arr.sort();
-    console.log(array);
     const first = array[array.length - 1];
     const second = array[array.length - 2];
     const third = array[array.length - 3];
@@ -291,9 +290,7 @@ function get3TopItems(arr) {
   if (arr.length > 3) {
     const array1 = [];
     const array = arr.sort();
-    console.log(array);
     const first = array[arr.length - 1];
-    console.log(first);
     const second = array[arr.length - 2];
     return array1.concat(10, first, second);
   }
