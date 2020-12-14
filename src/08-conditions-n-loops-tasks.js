@@ -129,8 +129,16 @@ function isTriangle(a, b, c) {
  *   { top:20, left:20, width: 20, height: 20 }    =>  false
  *
  */
-function doRectanglesOverlap(/* rect1, rect2 */) {
-  throw new Error('Not implemented');
+function doRectanglesOverlap(rect1, rect2) {
+  const l1 = { x: rect1.left, y: rect1.top };
+  const r1 = { x: rect1.left + rect1.width, y: rect1.top + rect1.height };
+
+  const l2 = { x: rect2.left, y: rect2.top };
+  const r2 = { x: rect2.left + rect2.width, y: rect2.top + rect2.height };
+
+  if (l1.x >= r2.x || l2.x >= r1.x) return false;
+  if (l1.y >= r2.y || l2.y >= r1.y) return false;
+  return true;
 }
 
 /**
@@ -159,8 +167,8 @@ function doRectanglesOverlap(/* rect1, rect2 */) {
  *   { center: { x:0, y:0 }, radius:10 },  { x:10, y:10 }   => false
  *
  */
-function isInsideCircle(/* circle, point */) {
-  throw new Error('Not implemented');
+function isInsideCircle(circle, point) {
+  return Math.hypot(circle.center.x - point.x, circle.center.y - point.y) < circle.radius;
 }
 
 /**
@@ -263,8 +271,12 @@ function reverseInteger(num) {
  *   5436468789016589 => false
  *   4916123456789012 => false
  */
-function isCreditCardNumber(/* ccn */) {
-  throw new Error('Not implemented');
+function isCreditCardNumber(ccn) {
+  const sum = ccn.toString().split``.reverse()
+    .map((el, i) => (i % 2 ? +el * 2 : +el))
+    .map((num) => (num > 9 ? num - 9 : num))
+    .reduce((acc, n) => acc + n);
+  return sum % 10 === 0;
 }
 
 /**
@@ -281,8 +293,15 @@ function isCreditCardNumber(/* ccn */) {
  *   10000 ( 1+0+0+0+0 = 1 ) => 1
  *   165536 (1+6+5+5+3+6 = 26,  2+6 = 8) => 8
  */
-function getDigitalRoot(/* num */) {
-  throw new Error('Not implemented');
+function getDigitalRoot(num) {
+  if (num < 10) return num;
+
+  const stringNumArray = num.toString().split('');
+  const digitRoot = stringNumArray.reduce(
+    (sum, number) => sum + parseInt(number, 10),
+    0,
+  );
+  return getDigitalRoot(digitRoot);
 }
 
 /**
